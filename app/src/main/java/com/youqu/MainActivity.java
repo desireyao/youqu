@@ -20,6 +20,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        setSteepStatusBar(true);
         fragments.add(FragmentOne.newInstance());
         fragments.add(FragmentTwo.newInstance());
         FragmentUtils.addFragments(getSupportFragmentManager(), fragments, R.id.content, 0);
@@ -32,6 +33,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState, View view) {
+        initTitle("HOME");
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 

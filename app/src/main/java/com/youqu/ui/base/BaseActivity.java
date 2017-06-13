@@ -4,10 +4,14 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.youqu.R;
 
 /**
  * <pre>
@@ -19,24 +23,15 @@ import android.view.WindowManager;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    /**
-     * 是否全屏
-     */
     private boolean isFullScreen = false;
-    /**
-     * 是否沉浸状态栏
-     */
+
     private boolean isSteepStatusBar = false;
-    /**
-     * 当前Activity渲染的视图View
-     */
+
     protected View contentView;
-    /**
-     * 上次点击时间
-     */
-    private long lastClick = 0;
 
     protected BaseActivity mActivity;
+
+    protected Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (isSteepStatusBar) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
                 }
             }
             setContentView(contentView);
@@ -64,6 +59,28 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 设置标题，返回icon，默认点击事件
+     *
+     * @param title
+     * @return toolbar
+     */
+    protected void initTitle(String title) {
+        mToolbar = (Toolbar) findViewById(R.id.include_toolbar);
+        if (mToolbar != null) {
+            TextView tv = (TextView) mToolbar.findViewById(R.id.include_toolbar_title);
+            tv.setText(title);
+
+//            mToolbar.setNavigationIcon(R.drawable.icon_toolbar_back);
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+//            mToolbar.setOnMenuItemClickListener(this);
+        }
+    }
 
     /**
      * 初始化数据
@@ -81,23 +98,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化view
      */
     public abstract void initView(Bundle savedInstanceState, final View view);
-
-
-
-
-    /**
-     * 判断是否快速点击
-     *
-     * @return {@code true}: 是<br>{@code false}: 否
-     */
-    private boolean isFastClick() {
-        long now = System.currentTimeMillis();
-        if (now - lastClick >= 200) {
-            lastClick = now;
-            return false;
-        }
-        return true;
-    }
 
     /**
      * 设置是否全屏
