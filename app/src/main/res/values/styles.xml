@@ -1,11 +1,26 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryMid</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="actionMenuTextColor">@color/colorPrimary</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/white_bg</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
+        <!-- Button英文字符自动大写的问题 -->
+        <item name="textAllCaps">false</item>
+        <item name="android:colorBackground">@color/white_bg</item>
     </style>
 
 </resources>

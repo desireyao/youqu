@@ -3,22 +3,38 @@ package com.youqu;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import com.youqu.ui.base.BaseActivity;
+import com.youqu.ui.fragments.FragmentOne;
+import com.youqu.ui.fragments.FragmentTwo;
+import com.youqu.utils.FragmentUtils;
 
-    private TextView mTextMessage;
+import java.util.ArrayList;
+
+public class MainActivity extends BaseActivity {
+
+    private ArrayList<Fragment> fragments = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void initData() {
+        fragments.add(FragmentOne.newInstance());
+        fragments.add(FragmentTwo.newInstance());
+        FragmentUtils.addFragments(getSupportFragmentManager(), fragments, R.id.content, 0);
+    }
 
-        mTextMessage = (TextView) findViewById(R.id.message);
+    @Override
+    public int bindLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initView(Bundle savedInstanceState, View view) {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -28,13 +44,12 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    FragmentUtils.hideAllShowFragment(fragments.get(0));
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    FragmentUtils.hideAllShowFragment(fragments.get(1));
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
             return false;
