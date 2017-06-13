@@ -3,4 +3,47 @@
     <color name="colorPrimary">#4F4F4F</color>
     <color name="colorPrimaryDark">#363636</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorPrimaryLight">#f7e9bb</color>
+    <color name="colorPrimaryMid">#fec187</color>
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <color name="colorAlpha">#00000000</color>
+
+    <color name="sport_walk">#fff7dfbb</color>
+    <color name="sport_walk_click">#ff948670</color>
+    <color name="sport_walk_selected">#ff948670</color>
+
+    <color name="sport_run">#fffec187</color>
+    <color name="sport_run_click">#ff987451</color>
+    <color name="sport_run_selected">#ff987451</color>
+
+    <color name="sleep_deep">#7ecfea</color>
+    <color name="sleep_light">#d7f3f4</color>
+    <color name="sleep_wakeup">#ffcccccc</color>
+
+    <color name="sleep_deep_shadow">#5a92a3</color>
+    <color name="sleep_light_shadow">#98aaaa</color>
+    <color name="sleep_wakeup_shadow">#ff8e8e8e</color>
+
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="black_alpha">#bb000000</color>
+
+    <color name="white_bg">#ffffff</color>
+    <color name="gray_light">#ffeeeeee</color>
+    <color name="gray">#ffdddddd</color>
+    <color name="gray_text_light">#ff999999</color>
+    <color name="gray_mid">#ff969696</color>
+    <color name="gray_dark">#ff666666</color>
+    <color name="gray_deep_dark">#ff333333</color>
+    <color name="white_milk">#ffcccccc</color>
+    <color name="white_milk_dark">#ffc5c1c0</color>
+
+    <color name="red_sports_text">#ffff625f</color>
+    <color name="gray_alpha_bg">#66000000</color>
+
+    <color name="brown_running">#271e18</color>
+
+    <color name="colorGreen">#24ff57</color>
 </resources>
