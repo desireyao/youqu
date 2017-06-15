@@ -1,7 +1,5 @@
 package com.youqu.ui.base;
 
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,23 +12,13 @@ import android.widget.TextView;
 import com.youqu.R;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/10/24
- *     desc  : Activity基类
- * </pre>
+ *
  */
 public abstract class BaseActivity extends AppCompatActivity {
-
-    private boolean isFullScreen = false;
-
-    private boolean isSteepStatusBar = false;
+    private static final String Tag = "BaseActivity";
 
     protected View contentView;
-
     protected BaseActivity mActivity;
-
     protected Toolbar mToolbar;
 
     @Override
@@ -40,23 +28,19 @@ public abstract class BaseActivity extends AppCompatActivity {
             mActivity = this;
             initData();
             contentView = LayoutInflater.from(this).inflate(bindLayout(), null);
-            if (isFullScreen) {
-                this.getWindow().setFlags(
-                        WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                        WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                requestWindowFeature(Window.FEATURE_NO_TITLE);
-            }
-            if (isSteepStatusBar) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-                }
-            }
             setContentView(contentView);
-            initView(savedInstanceState, contentView);
+
+            initView(savedInstanceState);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setActivityIsFullScreen() {
+        this.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
     }
 
     /**
@@ -70,7 +54,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (mToolbar != null) {
             TextView tv = (TextView) mToolbar.findViewById(R.id.include_toolbar_title);
             tv.setText(title);
-
 //            mToolbar.setNavigationIcon(R.drawable.icon_toolbar_back);
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
@@ -97,23 +80,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化view
      */
-    public abstract void initView(Bundle savedInstanceState, final View view);
-
-    /**
-     * 设置是否全屏
-     *
-     * @param isFullScreen 是否全屏
-     */
-    public void setFullScreen(boolean isFullScreen) {
-        this.isFullScreen = isFullScreen;
-    }
-
-    /**
-     * 设置是否沉浸状态栏
-     *
-     * @param isSteepStatusBar 是否沉浸状态栏
-     */
-    public void setSteepStatusBar(boolean isSteepStatusBar) {
-        this.isSteepStatusBar = isSteepStatusBar;
-    }
+    public abstract void initView(Bundle savedInstanceState);
 }
