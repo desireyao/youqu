@@ -1,23 +1,114 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+//            keyAlias 'beacool.keystore'
+//            keyPassword 'Beacool'
+//            storeFile file('D:/KeyStore/debug.keystore')
+//            storePassword 'android'
+
+            keyAlias 'youqu.keystore'
+            keyPassword 'youqu123456'
+            storeFile file('D:/AndroidProjectsMy/git_code/youqu/youqu.keystore')
+            storePassword 'youqu123456'
+        }
+    }
+
     compileSdkVersion 25
     buildToolsVersion "25.0.1"
+
     defaultConfig {
         applicationId "com.youqu"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary= true
+        vectorDrawables.useSupportLibrary = true
+
+        buildConfigField('String', 'DEBUG_VALUE_HOST_URL_JAVA', toJavaCodeString(DEBUG_VALUE_HOST_URL_JAVA))
     }
+
+    productFlavors {
+        BeacoolMT {
+            applicationId "com.beacool.morethan"
+            versionCode 71
+            versionName "1.10.170614.0 Beta"
+            buildConfigField('int', 'VALUE_APP_TYPE', '0')
+            buildConfigField('String', 'VALUE_APP_ID', toJavaCodeString(VALUE_APP_ID_MT))
+            buildConfigField('String', 'VALUE_APP_KEY', toJavaCodeString(VALUE_APP_KEY_MT))
+            manifestPlaceholders = [app_name: "@string/app_name_Morethan"]
+            resValue('string', 'appid', '20021')
+            resValue('string', 'appkey', 'e80898b5455322f19b63e51c769aff4b')
+        }
+    }
+
     buildTypes {
         release {
+            minifyEnabled true
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            renderscriptOptimLevel 3
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            multiDexKeepProguard 'proguard-rules.pro'
+        }
+
+        debug {
             minifyEnabled false
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            renderscriptOptimLevel 3
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+        disable('MissingTranslation')
+    }
+
+}
+
+class Utils {
+    static def r = new Random(System.currentTimeMillis())
+}
+
+def String toJavaCodeString(String string) {
+    byte[] b = string.getBytes();
+    int c = b.length;
+    StringBuffer sb = new StringBuffer();
+
+    sb.append("new Object(){");
+    sb.append("int t;");
+    sb.append("public String toString() {");
+    sb.append("byte[] buf = new byte[");
+    sb.append(c);
+    sb.append("];");
+
+    for (int i = 0; i < c; ++i) {
+        int t = Utils.r.nextInt();
+        int f = Utils.r.nextInt(24) + 1;
+
+        t = (t & ~(0xff << f)) | (b[i] << f);
+
+        sb.append("t = ");
+        sb.append(t);
+        sb.append(";");
+        sb.append("buf[");
+        sb.append(i);
+        sb.append("] = (byte) (t >>> ");
+        sb.append(f);
+        sb.append(");");
+    }
+
+    sb.append("return new String(buf);");
+    sb.append("}}.toString()");
+
+    return sb.toString();
 }
 
 dependencies {
