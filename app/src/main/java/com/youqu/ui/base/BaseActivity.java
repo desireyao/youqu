@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.youqu.R;
+import com.youqu.utils.StatusBarUtil;
 
 /**
  *
@@ -29,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             initData();
             contentView = LayoutInflater.from(this).inflate(bindLayout(), null);
             setContentView(contentView);
+            setStatusBar();
 
             initView(savedInstanceState);
         } catch (Exception e) {
@@ -81,4 +83,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化view
      */
     public abstract void initView(Bundle savedInstanceState);
+
+    protected void setStatusBar() {
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
+    }
 }
