@@ -32,7 +32,7 @@ public class WeatherActivity extends BaseActivity {
     private void getData() {
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
-        StringRequest stringRequest = new StringRequest("http://www.baidu.com",
+        StringRequest stringRequest = new StringRequest("http://blog.csdn.net/guolin_blog/article/details/17482095/",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
