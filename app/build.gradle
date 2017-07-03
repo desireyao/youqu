@@ -3,14 +3,9 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         debug {
-//            keyAlias 'beacool.keystore'
-//            keyPassword 'Beacool'
-//            storeFile file('D:/KeyStore/debug.keystore')
-//            storePassword 'android'
-
             keyAlias 'youqu.keystore'
             keyPassword 'youqu123456'
-            storeFile file('D:/AndroidProjectsMy/git_code/youqu/youqu.keystore')
+            storeFile file('D:/AndroidStudioProjectsMy/git_code/youqu/youqu.keystore')
             storePassword 'youqu123456'
         }
     }
@@ -29,7 +24,7 @@ android {
 
         buildConfigField('String', 'DEBUG_VALUE_HOST_URL_JAVA', toJavaCodeString(DEBUG_VALUE_HOST_URL_JAVA))
     }
-
+    
     productFlavors {
         BeacoolMT {
             applicationId "com.beacool.morethan"

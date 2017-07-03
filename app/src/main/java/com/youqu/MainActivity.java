@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.youqu.ui.base.BaseActivity;
 import com.youqu.ui.fragments.FragmentOne;
@@ -20,7 +19,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        setSteepStatusBar(true);
         fragments.add(FragmentOne.newInstance());
         fragments.add(FragmentTwo.newInstance());
         FragmentUtils.addFragments(getSupportFragmentManager(), fragments, R.id.content, 0);
@@ -32,7 +30,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public void initView(Bundle savedInstanceState, View view) {
+    public void initView(Bundle savedInstanceState) {
         initTitle("HOME");
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
