@@ -5,14 +5,13 @@ android {
         debug {
             keyAlias 'youqu.keystore'
             keyPassword 'youqu123456'
-            storeFile file('D:/AndroidStudioProjectsMy/git_code/youqu/youqu.keystore')
+            storeFile file('D:/AndroidProjectsMy/git_code/youqu/youqu.keystore')
             storePassword 'youqu123456'
         }
     }
 
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
-
+    buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.youqu"
         minSdkVersion 19
@@ -21,21 +20,23 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-
-        buildConfigField('String', 'DEBUG_VALUE_HOST_URL_JAVA', toJavaCodeString(DEBUG_VALUE_HOST_URL_JAVA))
     }
 
     productFlavors {
-        BeacoolMT {
+        YouQu_Release {
             applicationId "com.youqu"
-            versionCode 71
-            versionName "1.10.170614.0 Beta"
+            versionCode 1
+            versionName "0.0.1 Beta"
             buildConfigField('int', 'VALUE_APP_TYPE', '0')
-            buildConfigField('String', 'VALUE_APP_ID', toJavaCodeString(VALUE_APP_ID_MT))
-            buildConfigField('String', 'VALUE_APP_KEY', toJavaCodeString(VALUE_APP_KEY_MT))
-            manifestPlaceholders = [app_name: "@string/app_name_Morethan"]
-            resValue('string', 'appid', '20021')
-            resValue('string', 'appkey', 'e80898b5455322f19b63e51c769aff4b')
+            manifestPlaceholders = [app_name: "@string/app_name"]
+        }
+
+        YouQu_Preview {
+            applicationId "com.youqu"
+            versionCode 1
+            versionName "0.0.1 Beta"
+            buildConfigField('int', 'VALUE_APP_TYPE', '1')
+            manifestPlaceholders = [app_name: "@string/app_name"]
         }
     }
 
@@ -111,9 +112,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:design:25.2.0'
-    compile 'com.android.support:support-vector-drawable:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:design:25.0.0'
+    compile 'com.android.support:support-vector-drawable:25.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0'
     testCompile 'junit:junit:4.12'
     compile project(':volley')

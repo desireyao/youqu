@@ -1,29 +1,15 @@
 package com.youqu.ui.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 
 import com.youqu.R;
 import com.youqu.ui.activities.WeatherActivity;
 import com.youqu.ui.base.BaseFragment;
-import com.youqu.utils.FragmentUtils;
 
-import java.util.Random;
-
-/**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 17/02/02
- *     desc  :
- * </pre>
- */
 public class FragmentOne extends BaseFragment implements View.OnClickListener{
 
     private Button btn_weather;
