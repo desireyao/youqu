@@ -52,6 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void initTitle(String title) {
         mToolbar = (Toolbar) findViewById(R.id.include_toolbar);
         if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
             TextView tv = (TextView) mToolbar.findViewById(R.id.include_toolbar_title);
             tv.setText(title);
 //            mToolbar.setNavigationIcon(R.drawable.icon_toolbar_back);
