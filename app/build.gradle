@@ -1,4 +1,10 @@
 apply plugin: 'com.android.application'
+apply plugin: 'bugly'
+
+bugly {
+    appId = '6edb08d6f2'                            // 注册时分配的App ID
+    appKey = '8472e7e7-c1ae-4bc9-9267-f19a2ba68244' // 注册时分配的App Key
+}
 
 android {
     signingConfigs {
@@ -20,6 +26,11 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
+//        ndk {
+//            // 设置支持的SO库架构
+//            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//        }
     }
 
     productFlavors {
@@ -118,4 +129,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0'
     testCompile 'junit:junit:4.12'
     compile project(':volley')
+
+    compile 'com.tencent.bugly:crashreport:latest.release'
+//    compile 'com.tencent.bugly:nativecrashreport:latest.release'
 }

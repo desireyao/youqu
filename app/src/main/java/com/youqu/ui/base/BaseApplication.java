@@ -6,6 +6,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.tencent.bugly.crashreport.CrashReport;
+
 /**
  * <pre>
  *     author: Blankj
@@ -29,6 +31,8 @@ public class BaseApplication extends Application {
         super.onCreate();
         sInstance = this;
         registerActivityLifecycleCallbacks(mCallbacks);
+
+        CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", false);
     }
 
     private ActivityLifecycleCallbacks mCallbacks = new ActivityLifecycleCallbacks() {
