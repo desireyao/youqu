@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.youqu.ui.base.BaseActivity;
 import com.youqu.ui.fragments.FragmentOne;
