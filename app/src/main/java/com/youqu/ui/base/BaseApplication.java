@@ -32,7 +32,7 @@ public class BaseApplication extends Application {
         sInstance = this;
         registerActivityLifecycleCallbacks(mCallbacks);
 
-        CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", false);
+        CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", true);
     }
 
     private ActivityLifecycleCallbacks mCallbacks = new ActivityLifecycleCallbacks() {

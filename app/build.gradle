@@ -4,6 +4,7 @@ apply plugin: 'bugly'
 bugly {
     appId = '6edb08d6f2'                            // 注册时分配的App ID
     appKey = '8472e7e7-c1ae-4bc9-9267-f19a2ba68244' // 注册时分配的App Key
+    appPackage = 'com.youqu'
 }
 
 android {
