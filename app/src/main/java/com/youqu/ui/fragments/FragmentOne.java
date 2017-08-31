@@ -4,14 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-
 import com.tencent.bugly.crashreport.BuglyLog;
 import com.youqu.R;
 import com.youqu.ui.base.BaseFragment;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class FragmentOne extends BaseFragment implements View.OnClickListener {
 
@@ -38,6 +33,8 @@ public class FragmentOne extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void initView(Bundle savedInstanceState, View view) {
+        BuglyLog.d(TAG, "用户打开了app--->");
+
         btn_weather = (Button) view.findViewById(R.id.btn_weather);
         btn_weather.setOnClickListener(this);
     }
@@ -49,10 +46,21 @@ public class FragmentOne extends BaseFragment implements View.OnClickListener {
             case R.id.btn_weather:
 //                startActivity(new Intent(getActivity(), WeatherActivity.class));
 //                CrashReport.testJavaCrash();
-                BuglyLog.e(TAG, "点击了btn_weather--->按钮");
-                List<String> list = new ArrayList<>();
-                list.get(1);
-                break;
+
+                BuglyLog.e(TAG, "用户点击了按钮造成了crash--->");
+//                CrashReport.testJavaCrash();
+
+//                  CrashReport.testANRCrash();
+
+//                CrashReport.testNativeCrash();
+//                List<String> list = new ArrayList<>();
+//                list.get(1);
+
+                while (true) {
+                    int a = 100;
+                }
+
+//                break;
         }
     }
 }

@@ -28,10 +28,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
 
-//        ndk {
-//            // 设置支持的SO库架构
-//            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
-//        }
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
     }
 
     productFlavors {
@@ -132,5 +132,5 @@ dependencies {
     compile project(':volley')
 
     compile 'com.tencent.bugly:crashreport:latest.release'
-//    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
 }

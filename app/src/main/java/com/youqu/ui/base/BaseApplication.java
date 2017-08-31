@@ -32,7 +32,12 @@ public class BaseApplication extends Application {
         sInstance = this;
         registerActivityLifecycleCallbacks(mCallbacks);
 
-        CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", true);
+        CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(this);
+        strategy.setAppChannel("mychannel");  //设置渠道
+//      CrashReport.initCrashReport(appContext, APPID, true, strategy);
+
+        CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2",true,strategy);
+        CrashReport.setUserId("9757");  //该用户本次启动后的异常日志用户ID都将是9527
     }
 
     private ActivityLifecycleCallbacks mCallbacks = new ActivityLifecycleCallbacks() {
