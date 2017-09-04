@@ -6,10 +6,8 @@ import android.widget.Button;
 
 import com.tencent.bugly.crashreport.BuglyLog;
 import com.youqu.R;
+import com.youqu.network.NetworkManager;
 import com.youqu.ui.base.BaseFragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FragmentOne extends BaseFragment implements View.OnClickListener {
 
@@ -48,20 +46,7 @@ public class FragmentOne extends BaseFragment implements View.OnClickListener {
         switch (id) {
             case R.id.btn_weather:
 //                startActivity(new Intent(getActivity(), WeatherActivity.class));
-//                CrashReport.testJavaCrash();
-
-                BuglyLog.e(TAG, "用户点击了按钮造成了crash--->");
-//                CrashReport.testJavaCrash();
-
-//                  CrashReport.testANRCrash();
-
-//                CrashReport.testNativeCrash();
-                List<String> list = new ArrayList<>();
-                list.get(1);
-
-                while (true) {
-                    int a = 100;
-                }
+                NetworkManager.test(getContext());
 
 //                break;
         }

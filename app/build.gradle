@@ -54,6 +54,7 @@ android {
             versionCode 1
             versionName "0.0.5"
             buildConfigField('int', 'VALUE_APP_TYPE', '0')
+            buildConfigField('String', 'VALUE_HOST_URL', toJavaCodeString(VALUE_HOST_URL))
             manifestPlaceholders = [app_name: "@string/app_name"]
         }
 
@@ -62,6 +63,7 @@ android {
             versionCode 1
             versionName "0.0.5 Beta"
             buildConfigField('int', 'VALUE_APP_TYPE', '1')
+            buildConfigField('String', 'VALUE_HOST_URL', toJavaCodeString(VALUE_HOST_URL))
             manifestPlaceholders = [app_name: "@string/app_name"]
         }
     }

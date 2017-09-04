@@ -24,6 +24,7 @@ public class AppVerUtils {
                 CrashReport.initCrashReport(mContext, "27b7e87cb1", true);
                 break;
         }
+
         CrashReport.setAppChannel(mContext, BuildConfig.FLAVOR);
     }
 
