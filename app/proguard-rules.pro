@@ -71,10 +71,5 @@
     public static ** valueOf(java.lang.String);
 }
 
--keep class com.bst.bsbandlib.sdk.BSBandJniHelper{
-    private final java.lang.String mPkgName;
-}
-
-
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}

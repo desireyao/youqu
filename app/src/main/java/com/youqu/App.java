@@ -1,4 +1,4 @@
-package com.youqu.ui.base;
+package com.youqu;
 
 import android.app.Activity;
 import android.app.Application;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.tencent.bugly.crashreport.CrashReport;
-import com.youqu.BuildConfig;
 
 /**
  * <pre>
@@ -17,11 +16,11 @@ import com.youqu.BuildConfig;
  *     desc  : 基类App
  * </pre>
  */
-public class BaseApplication extends Application {
+public class App extends Application {
 
-    private static final String TAG = "BaseApplication";
+    private static final String TAG = "App";
 
-    private static BaseApplication sInstance;
+    private static App sInstance;
 
     public static Context getInstance() {
         return sInstance;
@@ -37,7 +36,12 @@ public class BaseApplication extends Application {
 //        strategy.setAppChannel("mychannel");  //设置渠道
 ////      CrashReport.initCrashReport(appContext, APPID, true, strategy);
 
-        CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", false);
+        if (BuildConfig.VALUE_APP_TYPE == 0) {
+            CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", false);
+        } else if (BuildConfig.VALUE_APP_TYPE == 1) {
+            CrashReport.initCrashReport(getApplicationContext(), "27b7e87cb1", true);
+        }
+
         CrashReport.setAppChannel(this, BuildConfig.FLAVOR);
     }
 

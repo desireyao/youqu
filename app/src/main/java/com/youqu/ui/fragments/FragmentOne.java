@@ -5,9 +5,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.tencent.bugly.crashreport.BuglyLog;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.youqu.R;
 import com.youqu.ui.base.BaseFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FragmentOne extends BaseFragment implements View.OnClickListener {
 
@@ -53,9 +55,9 @@ public class FragmentOne extends BaseFragment implements View.OnClickListener {
 
 //                  CrashReport.testANRCrash();
 
-                CrashReport.testNativeCrash();
-//                List<String> list = new ArrayList<>();
-//                list.get(1);
+//                CrashReport.testNativeCrash();
+                List<String> list = new ArrayList<>();
+                list.get(1);
 
                 while (true) {
                     int a = 100;

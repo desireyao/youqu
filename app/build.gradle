@@ -1,9 +1,29 @@
 apply plugin: 'com.android.application'
 apply plugin: 'bugly'
 
-bugly {
-    appId = '6edb08d6f2'                            // 注册时分配的App ID
-    appKey = '8472e7e7-c1ae-4bc9-9267-f19a2ba68244' // 注册时分配的App Key
+//bugly {
+//    appId = '6edb08d6f2'                            // 注册时分配的App ID
+//    appKey = '8472e7e7-c1ae-4bc9-9267-f19a2ba68244' // 注册时分配的App Key
+//}
+
+android.applicationVariants.all { variant ->
+    def buglyAppId = null;
+    def buglyAppKey = null;
+    if (variant.flavorName.equals("YouQu_Release")) { // 渠道1：channel1
+        buglyAppId = '6edb08d6f2'
+        buglyAppKey = '8472e7e7-c1ae-4bc9-9267-f19a2ba68244'
+    } else if (variant.flavorName.equals("YouQu_Preview")) { // 渠道2：channel2
+        buglyAppId = '27b7e87cb1'
+        buglyAppKey = '6c658218-b963-47b7-8dbf-595e4663f193'
+    }
+
+    if(buglyAppId != null) {
+        variant.ext.buglyAppId = buglyAppId
+    }
+
+    if (buglyAppKey != null) {
+        variant.ext.buglyAppKey = buglyAppKey
+    }
 }
 
 android {
@@ -26,18 +46,13 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-
-        ndk {
-            // 设置支持的SO库架构
-            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
-        }
     }
 
     productFlavors {
         YouQu_Release {
             applicationId "com.youqu"
             versionCode 1
-            versionName "0.0.2 Beta"
+            versionName "0.0.5"
             buildConfigField('int', 'VALUE_APP_TYPE', '0')
             manifestPlaceholders = [app_name: "@string/app_name"]
         }
@@ -45,7 +60,7 @@ android {
         YouQu_Preview {
             applicationId "com.youqu"
             versionCode 1
-            versionName "0.0.1 Beta"
+            versionName "0.0.5 Beta"
             buildConfigField('int', 'VALUE_APP_TYPE', '1')
             manifestPlaceholders = [app_name: "@string/app_name"]
         }
