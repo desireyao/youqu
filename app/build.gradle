@@ -4,7 +4,6 @@ apply plugin: 'bugly'
 bugly {
     appId = '6edb08d6f2'                            // 注册时分配的App ID
     appKey = '8472e7e7-c1ae-4bc9-9267-f19a2ba68244' // 注册时分配的App Key
-    appPackage = 'com.youqu'
 }
 
 android {
@@ -38,7 +37,7 @@ android {
         YouQu_Release {
             applicationId "com.youqu"
             versionCode 1
-            versionName "0.0.1 Beta"
+            versionName "0.0.2 Beta"
             buildConfigField('int', 'VALUE_APP_TYPE', '0')
             manifestPlaceholders = [app_name: "@string/app_name"]
         }
