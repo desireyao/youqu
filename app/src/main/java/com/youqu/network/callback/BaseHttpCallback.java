@@ -1,5 +1,8 @@
 package com.youqu.network.callback;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
 /**
  * Package com.youqu.network.callback.
  * Created by yaoh on 2017/09/04.
@@ -7,9 +10,15 @@ package com.youqu.network.callback;
  * <p/>
  * Description:
  */
-public interface BaseHttpCallback {
+public abstract class BaseHttpCallback implements Response.Listener<String>,Response.ErrorListener {
 
-    void parseString(String data);
+    @Override
+    public void onResponse(String response) {
 
+    }
 
+    @Override
+    public void onErrorResponse(VolleyError error) {
+
+    }
 }

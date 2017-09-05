@@ -3,17 +3,22 @@ package com.youqu.ui.fragments;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-import com.tencent.bugly.crashreport.BuglyLog;
+import com.android.volley.VolleyError;
 import com.youqu.R;
 import com.youqu.network.NetworkManager;
+import com.youqu.network.callback.BaseHttpCallback;
+import com.youqu.network.model.CityInfo;
 import com.youqu.ui.base.BaseFragment;
+import com.youqu.utils.LogUtils;
 
 public class FragmentOne extends BaseFragment implements View.OnClickListener {
 
     private static final String TAG = "FragmentOne";
 
     private Button btn_weather;
+    private TextView tv_content;
 
     public static FragmentOne newInstance() {
         Bundle args = new Bundle();
@@ -34,10 +39,10 @@ public class FragmentOne extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void initView(Bundle savedInstanceState, View view) {
-        BuglyLog.d(TAG, "用户打开了app--->");
-
         btn_weather = (Button) view.findViewById(R.id.btn_weather);
         btn_weather.setOnClickListener(this);
+
+        tv_content = (TextView) view.findViewById(R.id.tv_content);
     }
 
     @Override
@@ -46,9 +51,26 @@ public class FragmentOne extends BaseFragment implements View.OnClickListener {
         switch (id) {
             case R.id.btn_weather:
 //                startActivity(new Intent(getActivity(), WeatherActivity.class));
-                NetworkManager.test(getContext());
+                CityInfo cityInfo = new CityInfo();
+                cityInfo.setKey("d1971fe6fe26");
+                cityInfo.setProvince("江苏");
+                cityInfo.setCity("南京");
+                NetworkManager.get(getContext()).getWetweatherData(cityInfo, new BaseHttpCallback() {
 
-//                break;
+                    @Override
+                    public void onResponse(String response) {
+//                        super.onResponse(response);
+                        tv_content.setText(response);
+                        LogUtils.json(TAG, response);
+                    }
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        super.onErrorResponse(error);
+                    }
+                });
+
+                break;
         }
     }
 }
