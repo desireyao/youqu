@@ -55,18 +55,12 @@ public class FragmentOne extends BaseFragment implements View.OnClickListener {
                 cityInfo.setKey("d1971fe6fe26");
                 cityInfo.setProvince("江苏");
                 cityInfo.setCity("南京");
-                NetworkManager.get(getContext()).getWetweatherData(cityInfo, new BaseHttpCallback() {
 
+                NetworkManager.get(getContext()).getWetweatherData(cityInfo, new BaseHttpCallback() {
                     @Override
-                    public void onResponse(String response) {
-//                        super.onResponse(response);
+                    public void onSuccess(String response) {
                         tv_content.setText(response);
                         LogUtils.json(TAG, response);
-                    }
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        super.onErrorResponse(error);
                     }
                 });
 

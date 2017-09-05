@@ -10,15 +10,20 @@ import com.android.volley.VolleyError;
  * <p/>
  * Description:
  */
-public abstract class BaseHttpCallback implements Response.Listener<String>,Response.ErrorListener {
+public abstract class BaseHttpCallback implements Response.Listener<String>, Response.ErrorListener {
+
 
     @Override
     public void onResponse(String response) {
-
+        onSuccess(response);
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
-
+        onError(error.toString());
     }
+
+    public abstract void onSuccess(String response);
+
+    public  void onError(String error){};
 }
