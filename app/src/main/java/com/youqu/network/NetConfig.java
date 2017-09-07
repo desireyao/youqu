@@ -10,6 +10,7 @@ import com.youqu.BuildConfig;
  */
 public class NetConfig {
 
-    public static final String weather_url = BuildConfig.VALUE_HOST_URL + "weather/query";
+    public static final String WEATHER_URL = BuildConfig.VALUE_HOST_URL;
+    public static final String WX_ARTIVLE_URL = BuildConfig.VALUE_WX_ARTICLE_URL;
 
 }

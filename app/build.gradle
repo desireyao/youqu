@@ -55,6 +55,7 @@ android {
             versionName "0.0.5"
             buildConfigField('int', 'VALUE_APP_TYPE', '0')
             buildConfigField('String', 'VALUE_HOST_URL', toJavaCodeString(VALUE_HOST_URL))
+            buildConfigField('String', 'VALUE_WX_ARTICLE_URL', toJavaCodeString(VALUE_WX_ARTICLE_URL))
             manifestPlaceholders = [app_name: "@string/app_name"]
         }
 
@@ -64,6 +65,7 @@ android {
             versionName "0.0.5 Beta"
             buildConfigField('int', 'VALUE_APP_TYPE', '1')
             buildConfigField('String', 'VALUE_HOST_URL', toJavaCodeString(VALUE_HOST_URL))
+            buildConfigField('String', 'VALUE_WX_ARTICLE_URL', toJavaCodeString(VALUE_WX_ARTICLE_URL))
             manifestPlaceholders = [app_name: "@string/app_name"]
         }
     }

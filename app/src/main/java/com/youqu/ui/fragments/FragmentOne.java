@@ -51,12 +51,20 @@ public class FragmentOne extends BaseFragment implements View.OnClickListener {
         switch (id) {
             case R.id.btn_weather:
 //                startActivity(new Intent(getActivity(), WeatherActivity.class));
-                CityInfo cityInfo = new CityInfo();
-                cityInfo.setKey("d1971fe6fe26");
-                cityInfo.setProvince("江苏");
-                cityInfo.setCity("南京");
+//                CityInfo cityInfo = new CityInfo();
+//                cityInfo.setKey("d1971fe6fe26");
+//                cityInfo.setProvince("江苏");
+//                cityInfo.setCity("南京");
 
-                NetworkManager.get(getContext()).getWetweatherData(cityInfo, new BaseHttpCallback() {
+//                NetworkManager.get(getContext()).getWetweatherData(new BaseHttpCallback() {
+//                    @Override
+//                    public void onSuccess(String response) {
+//                        tv_content.setText(response);
+//                        LogUtils.json(TAG, response);
+//                    }
+//                });
+
+                NetworkManager.get(getContext()).getWxArticleData(new BaseHttpCallback() {
                     @Override
                     public void onSuccess(String response) {
                         tv_content.setText(response);

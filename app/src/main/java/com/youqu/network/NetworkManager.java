@@ -45,12 +45,32 @@ public class NetworkManager {
     }
 
     public void getWetweatherData(CityInfo cityInfo, BaseHttpCallback callback) {
-        Map<String,String> parmas = new HashMap<>();
-        parmas.put("key",cityInfo.getKey());
-        parmas.put("province",cityInfo.getProvince());
-        parmas.put("city",cityInfo.getCity());
+        Map<String, String> parmas = new HashMap<>();
+        parmas.put("key", cityInfo.getKey());
+        parmas.put("province", cityInfo.getProvince());
+        parmas.put("city", cityInfo.getCity());
 
-        BaseStringRequest stringRequest = new BaseStringRequest(NetConfig.weather_url,parmas,callback);
+        BaseStringRequest stringRequest = new BaseStringRequest(NetConfig.WEATHER_URL, parmas, callback);
+        mQueue.add(stringRequest);
+    }
+
+    public void getWetweatherData(BaseHttpCallback callback) {
+        Map<String, String> parmas = new HashMap<>();
+        parmas.put("key", "d1971fe6fe26");
+        parmas.put("province", "安徽");
+        parmas.put("city", "合肥");
+
+        BaseStringRequest stringRequest = new BaseStringRequest(NetConfig.WEATHER_URL, parmas, callback);
+        mQueue.add(stringRequest);
+    }
+
+    public void getWxArticleData(BaseHttpCallback callback) {
+        Map<String, String> parmas = new HashMap<>();
+        parmas.put("page", "1");
+        parmas.put("cid", "2");
+        parmas.put("key", "520520test");
+        parmas.put("size", "20");
+        BaseStringRequest stringRequest = new BaseStringRequest(NetConfig.WX_ARTIVLE_URL, parmas, callback);
         mQueue.add(stringRequest);
     }
 }
