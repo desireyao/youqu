@@ -1,6 +1,7 @@
 package com.youqu;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -35,6 +36,10 @@ public class MainActivity extends BaseActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        Message msg = new Message();
+        Message msg1 = Message.obtain();
+
 
     }
 
