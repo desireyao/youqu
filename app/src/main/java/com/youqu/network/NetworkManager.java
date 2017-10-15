@@ -64,12 +64,17 @@ public class NetworkManager {
         mQueue.add(stringRequest);
     }
 
-    public void getWxArticleData(BaseHttpCallback callback) {
+    public void getJokes(BaseHttpCallback callback,int page,int size){
+        getWxArticleData(callback,37,page,size);
+    }
+
+    private void getWxArticleData(BaseHttpCallback callback,int cid,int page,int size) {
         Map<String, String> parmas = new HashMap<>();
-        parmas.put("page", "1");
-        parmas.put("cid", "2");
+        parmas.put("page", String.valueOf(page));
+        parmas.put("cid", String.valueOf(cid));
         parmas.put("key", "520520test");
-        parmas.put("size", "20");
+        parmas.put("size", String.valueOf(size));
+
         BaseStringRequest stringRequest = new BaseStringRequest(NetConfig.WX_ARTIVLE_URL, parmas, callback);
         mQueue.add(stringRequest);
     }
