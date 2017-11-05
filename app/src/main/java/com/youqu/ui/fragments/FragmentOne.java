@@ -74,8 +74,9 @@ public class FragmentOne extends BaseFragment implements BaseRecyPRAdapter.LoadM
 
     @Override
     public void initView(Bundle savedInstanceState, View view) {
-        ButterKnife.bind(this, view);
+        initTitle("首页",false,null);
 
+        ButterKnife.bind(this, view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);

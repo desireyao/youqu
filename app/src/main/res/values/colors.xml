@@ -1,30 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#146e6e</color>
-    <color name="colorPrimaryDark">#083939</color>
+    <color name="colorPrimary">#FFC107</color>
+    <color name="colorPrimaryDark">#FFC107</color>
     <color name="colorAccent">#ffdddddd</color>
 
-    <color name="colorPrimaryLight">#f7e9bb</color>
-    <color name="colorPrimaryMid">#fec187</color>
+    <color name="colorPrimaryLight">#FFC107</color>
+    <color name="colorPrimaryMid">#FFE082</color>
     <!--<color name="colorAccent">#FF4081</color>-->
 
     <color name="colorAlpha">#00000000</color>
 
-    <color name="sport_walk">#fff7dfbb</color>
-    <color name="sport_walk_click">#ff948670</color>
-    <color name="sport_walk_selected">#ff948670</color>
-
-    <color name="sport_run">#fffec187</color>
-    <color name="sport_run_click">#ff987451</color>
-    <color name="sport_run_selected">#ff987451</color>
-
-    <color name="sleep_deep">#7ecfea</color>
-    <color name="sleep_light">#d7f3f4</color>
-    <color name="sleep_wakeup">#ffcccccc</color>
-
-    <color name="sleep_deep_shadow">#5a92a3</color>
-    <color name="sleep_light_shadow">#98aaaa</color>
-    <color name="sleep_wakeup_shadow">#ff8e8e8e</color>
 
     <color name="white">#ffffffff</color>
     <color name="black">#ff000000</color>

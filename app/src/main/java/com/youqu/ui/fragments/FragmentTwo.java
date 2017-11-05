@@ -35,7 +35,7 @@ public class FragmentTwo extends BaseFragment {
 
     @Override
     public void initView(Bundle savedInstanceState, View view) {
-
+        initTitle("第二页", false, null);
     }
 
 }

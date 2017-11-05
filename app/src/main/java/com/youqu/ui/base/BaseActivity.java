@@ -1,5 +1,7 @@
 package com.youqu.ui.base;
 
+import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,8 +11,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.youqu.R;
 import com.youqu.utils.StatusBarUtil;
+import com.youqu.utils.ViewUtil;
 
 /**
  *
@@ -25,24 +29,23 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
-            mActivity = this;
-            initData();
-            contentView = LayoutInflater.from(this).inflate(bindLayout(), null);
-            setContentView(contentView);
-            setStatusBar();
+        mActivity = this;
 
-            initView(savedInstanceState);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        initWindow();
+        contentView = LayoutInflater.from(this).inflate(bindLayout(), null);
+        setContentView(contentView);
+
+        initData();
+        initView(savedInstanceState);
     }
 
-    public void setActivityIsFullScreen() {
-        this.getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+    public void setTransParentBarMode() {
+        Window mWindow = getWindow();
+        mWindow.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        SystemBarTintManager mTintManager = new SystemBarTintManager(this);
+        mTintManager.setStatusBarTintColor(Color.TRANSPARENT);
+        mTintManager.setStatusBarTintEnabled(true);
     }
 
     /**
@@ -55,6 +58,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.include_toolbar);
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
             TextView tv = (TextView) mToolbar.findViewById(R.id.include_toolbar_title);
             tv.setText(title);
 //            mToolbar.setNavigationIcon(R.drawable.icon_toolbar_back);
@@ -66,6 +71,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             });
 //            mToolbar.setOnMenuItemClickListener(this);
         }
+
+        mToolbar.setPadding(0, ViewUtil.getStatusBarHeight(this),0,0);
     }
 
     /**
@@ -84,6 +91,11 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化view
      */
     public abstract void initView(Bundle savedInstanceState);
+
+    public void initWindow() {
+    }
+
+    ;
 
     protected void setStatusBar() {
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));

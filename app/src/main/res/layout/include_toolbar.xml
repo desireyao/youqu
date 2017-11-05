@@ -28,4 +28,5 @@
         android:layout_height="1px"
         android:layout_below="@+id/include_toolbar"
         android:src="@color/gray" />
+
 </RelativeLayout>
