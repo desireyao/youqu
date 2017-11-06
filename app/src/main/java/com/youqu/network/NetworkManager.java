@@ -44,6 +44,16 @@ public class NetworkManager {
         return mInstance;
     }
 
+    public void doCommonRequest(Map<String, String> params, BaseHttpCallback callback) {
+//        Map<String, String> parmas = new HashMap<>();
+//        parmas.put("key", cityInfo.getKey());
+//        parmas.put("province", cityInfo.getProvince());
+//        parmas.put("city", cityInfo.getCity());
+
+        BaseStringRequest stringRequest = new BaseStringRequest(NetConfig.MENU_URL, params, callback);
+        mQueue.add(stringRequest);
+    }
+
     public void getWetweatherData(CityInfo cityInfo, BaseHttpCallback callback) {
         Map<String, String> parmas = new HashMap<>();
         parmas.put("key", cityInfo.getKey());

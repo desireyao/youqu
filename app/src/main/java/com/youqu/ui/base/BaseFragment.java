@@ -38,16 +38,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            boolean isSupportHidden = savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN);
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            if (isSupportHidden) {
-                ft.hide(this);
-            } else {
-                ft.show(this);
-            }
-            ft.commit();
-        }
         Log.d(TAG, "onCreate: ");
     }
 
@@ -129,7 +119,7 @@ public abstract class BaseFragment extends Fragment {
             tv.setText(title);
         }
 
-        mToolbar.setPadding(0, ViewUtil.getStatusBarHeight(mActivity), 0, 0);
+        mToolbar.setPadding(0, ViewUtil.getStatusBarHeight(mActivity), 0,0);
     }
 
 

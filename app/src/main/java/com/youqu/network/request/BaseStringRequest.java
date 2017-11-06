@@ -22,7 +22,7 @@ public class BaseStringRequest extends StringRequest {
     public BaseStringRequest(String url, Map<String, String> params, BaseHttpCallback callback) {
         super(Method.POST, url, callback, callback);
         mParams = params;
-        LogUtils.d(TAG, "mParams--->" + mParams.toString());
+        LogUtils.d(TAG, "url = " + url + "\n mParams--->" + mParams.toString());
     }
 
     @Override

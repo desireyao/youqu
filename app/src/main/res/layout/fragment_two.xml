@@ -9,7 +9,6 @@
         android:id="@+id/include_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:background="@color/colorPrimary"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -24,6 +23,12 @@
             android:textSize="@dimen/include_toolbar_title_size" />
 
     </android.support.v7.widget.Toolbar>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BUTTON" />
 
 
 </LinearLayout>
