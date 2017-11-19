@@ -31,7 +31,7 @@ android {
         debug {
             keyAlias 'youqu.keystore'
             keyPassword 'youqu123456'
-            storeFile file('D:/AndroidStudioProjectsMy/git_code/youqu/youqu.keystore')
+            storeFile file('../youqu.keystore')
             storePassword 'youqu123456'
         }
     }
