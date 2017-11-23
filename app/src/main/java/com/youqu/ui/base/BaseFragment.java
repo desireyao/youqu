@@ -119,7 +119,7 @@ public abstract class BaseFragment extends Fragment {
             tv.setText(title);
         }
 
-        mToolbar.setPadding(0, ViewUtil.getStatusBarHeight(mActivity), 0,0);
+        mToolbar.setPadding(0,ViewUtil.dp2px(getContext(),16), 0, 0);
     }
 
 

@@ -69,7 +69,7 @@ public class FragmentOne extends BaseFragment implements BaseRecyPRAdapter.LoadM
 
     @Override
     public void initView(Bundle savedInstanceState, View view) {
-        initTitle("首页",true,null);
+        initTitle("首页",false,null);
 
         ButterKnife.bind(this, view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
@@ -131,12 +131,12 @@ public class FragmentOne extends BaseFragment implements BaseRecyPRAdapter.LoadM
             TextView tvContent = (TextView) holder.getView(R.id.tv_content);
             tvContent.setText(mDataList.get(position).getSubTitle());
 
-            ImageView img = (ImageView) holder.getView(R.id.img);
-            Glide.with(getContext())
-                    .load(mDataList.get(position).getThumbnails())
-                    .placeholder(R.drawable.img_placeholder)
-                    .fitCenter()
-                    .into(img);
+//            ImageView img = (ImageView) holder.getView(R.id.img);
+//            Glide.with(getContext())
+//                    .load(mDataList.get(position).getThumbnails())
+//                    .placeholder(R.drawable.img_placeholder)
+//                    .fitCenter()
+//                    .into(img);
         }
     }
 }

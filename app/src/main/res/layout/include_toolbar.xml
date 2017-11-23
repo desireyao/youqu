@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/include_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="@color/white_bg">
+        android:layout_height="@dimen/include_toolbar_height"
+        android:background="@color/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_arrow_back" />
 
         <TextView
             android:id="@+id/include_toolbar_title"
@@ -17,16 +24,10 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="Title"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:textSize="@dimen/include_toolbar_title_size" />
 
     </android.support.v7.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/iv_horline"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_below="@+id/include_toolbar"
-        android:src="@color/gray" />
 
 </RelativeLayout>
