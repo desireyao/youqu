@@ -6,20 +6,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
 import com.youqu.R;
 import com.youqu.adapter.BaseRecyPRAdapter;
 import com.youqu.network.NetworkManager;
 import com.youqu.network.bean.Jokes;
 import com.youqu.network.callback.BaseHttpCallback;
-import com.youqu.network.model.CityInfo;
 import com.youqu.ui.base.BaseFragment;
 import com.youqu.utils.LogUtils;
 
