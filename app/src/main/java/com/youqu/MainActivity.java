@@ -26,6 +26,7 @@ public class MainActivity extends BaseActivity {
     private FragmentManager mFragmentManager;
     private Fragment mCurrentFragment;
 
+
     Handler mHandler = new Handler();
 
     @Override
