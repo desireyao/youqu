@@ -27,9 +27,6 @@ public class App extends Application {
 
         if (BuildConfig.VALUE_APP_TYPE == 0) {
             CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", false);
-            CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", false);
-            CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", false);
-            CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", false);
         } else if (BuildConfig.VALUE_APP_TYPE == 1) {
             CrashReport.initCrashReport(getApplicationContext(), "27b7e87cb1", true);
         }
