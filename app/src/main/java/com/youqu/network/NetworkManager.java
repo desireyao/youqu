@@ -14,6 +14,7 @@ import com.youqu.network.callback.BaseHttpCallback;
 import com.youqu.network.model.CityInfo;
 import com.youqu.network.request.BaseStringRequest;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +50,6 @@ public class NetworkManager {
 //        parmas.put("key", cityInfo.getKey());
 //        parmas.put("province", cityInfo.getProvince());
 //        parmas.put("city", cityInfo.getCity());
-
         BaseStringRequest stringRequest = new BaseStringRequest(NetConfig.MENU_URL, params, callback);
         mQueue.add(stringRequest);
     }
