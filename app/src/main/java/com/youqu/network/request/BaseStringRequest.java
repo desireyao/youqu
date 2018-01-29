@@ -2,7 +2,6 @@ package com.youqu.network.request;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.toolbox.StringRequest;
-import com.youqu.network.callback.BaseHttpCallback;
 import com.youqu.utils.LogUtils;
 
 import java.util.Map;

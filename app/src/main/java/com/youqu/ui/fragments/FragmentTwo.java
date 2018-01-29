@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.youqu.R;
 import com.youqu.network.NetworkManager;
-import com.youqu.network.callback.BaseHttpCallback;
 import com.youqu.ui.base.BaseFragment;
 
 import java.util.HashMap;
