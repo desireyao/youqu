@@ -1,6 +1,5 @@
 package com.youqu.ui.base;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +19,7 @@ import com.youqu.utils.ViewUtil;
  *
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    private static final String Tag = "BaseActivity";
+    public static String TAG = "";
 
     protected View contentView;
     protected BaseActivity mActivity;
@@ -29,8 +28,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivity = this;
+        TAG = this.getClass().getSimpleName();
 
+        mActivity = this;
         initWindow();
         contentView = LayoutInflater.from(this).inflate(bindLayout(), null);
         setContentView(contentView);
@@ -54,13 +54,13 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param title
      * @return toolbar
      */
-    protected void initTitle(String title) {
-        mToolbar = (Toolbar) findViewById(R.id.include_toolbar);
+    protected void initTitle(String title,boolean isShowBackIcon) {
+        mToolbar =  findViewById(R.id.include_toolbar);
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(isShowBackIcon);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
-            TextView tv = (TextView) mToolbar.findViewById(R.id.include_toolbar_title);
+            TextView tv = mToolbar.findViewById(R.id.include_toolbar_title);
             tv.setText(title);
 //            mToolbar.setNavigationIcon(R.drawable.icon_toolbar_back);
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -72,7 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 //            mToolbar.setOnMenuItemClickListener(this);
         }
 
-        mToolbar.setPadding(0, ViewUtil.getStatusBarHeight(this),0,0);
+//        mToolbar.setPadding(0, ViewUtil.getStatusBarHeight(this),0,0);
     }
 
     /**
@@ -93,9 +93,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract void initView(Bundle savedInstanceState);
 
     public void initWindow() {
-    }
 
-    ;
+    }
 
     protected void setStatusBar() {
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));

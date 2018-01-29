@@ -1,13 +1,14 @@
 package com.youqu;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.os.Bundle;
-import android.util.Log;
 
 import com.tencent.bugly.crashreport.CrashReport;
-import com.youqu.callback.LifecycleCallback;
+import com.zhy.http.okhttp.OkHttpUtils;
+
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 public class App extends Application {
 
@@ -23,8 +24,15 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
-        registerActivityLifecycleCallbacks(new LifecycleCallback());
 
+        initBugly();
+        initOkHttpClient();
+    }
+
+    /**
+     * 初始化 bugly
+     */
+    private void initBugly(){
         if (BuildConfig.VALUE_APP_TYPE == 0) {
             CrashReport.initCrashReport(getApplicationContext(), "6edb08d6f2", false);
         } else if (BuildConfig.VALUE_APP_TYPE == 1) {
@@ -32,6 +40,17 @@ public class App extends Application {
         }
 
         CrashReport.setAppChannel(this, BuildConfig.FLAVOR);
+    }
+
+    private void initOkHttpClient(){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+//                .addInterceptor(new LoggerInterceptor("TAG"))
+                .connectTimeout(10000L, TimeUnit.MILLISECONDS)
+                .readTimeout(10000L, TimeUnit.MILLISECONDS)
+                //其他配置
+                .build();
+
+        OkHttpUtils.initClient(okHttpClient);
     }
 
 }

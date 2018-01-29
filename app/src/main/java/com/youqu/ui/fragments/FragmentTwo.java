@@ -42,25 +42,7 @@ public class FragmentTwo extends BaseFragment {
 
     @OnClick(R.id.btn)
     public void start() {
-        Map<String, String> params = new HashMap<>();
-        params.put("update", "menu");
-        params.put("num", "1");
-        NetworkManager.get(getContext()).doCommonRequest(params, new BaseHttpCallback<String>() {
-            @Override
-            public void onError(String error) {
-                Log.e(TAG, "error: " + error);
-            }
 
-            @Override
-            public void onSuccess(String msg) {
-                Log.e(TAG, "onSuccess: " + msg);
-            }
-
-            @Override
-            public void onResponse(String response) {
-                Log.e(TAG, "onResponse: " + response);
-            }
-        });
 
     }
 }

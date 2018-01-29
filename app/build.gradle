@@ -36,7 +36,7 @@ android {
         }
     }
 
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.youqu"
@@ -56,8 +56,7 @@ android {
             versionName "0.0.5"
             buildConfigField('int', 'VALUE_APP_TYPE', '0')
             buildConfigField('String', 'VALUE_HOST_URL', toJavaCodeString(VALUE_HOST_URL))
-            buildConfigField('String', 'VALUE_WX_ARTICLE_URL', toJavaCodeString(VALUE_WX_ARTICLE_URL))
-            buildConfigField('String', 'VALUE_MENU_URL', toJavaCodeString(VALUE_UPDATESERVLET_URL))
+            buildConfigField('String', 'VALUE_BASE_URL', toJavaCodeString(VALUE_BASE_URL))
             manifestPlaceholders = [app_name: "@string/app_name"]
 
         }
@@ -68,8 +67,7 @@ android {
             versionName "0.0.5 Beta"
             buildConfigField('int', 'VALUE_APP_TYPE', '1')
             buildConfigField('String', 'VALUE_HOST_URL', toJavaCodeString(VALUE_HOST_URL))
-            buildConfigField('String', 'VALUE_WX_ARTICLE_URL', toJavaCodeString(VALUE_WX_ARTICLE_URL))
-            buildConfigField('String', 'VALUE_MENU_URL', toJavaCodeString(VALUE_UPDATESERVLET_URL))
+            buildConfigField('String', 'VALUE_BASE_URL', toJavaCodeString(VALUE_BASE_URL))
             manifestPlaceholders = [app_name: "@string/app_name"]
 
         }
@@ -147,22 +145,18 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:support-vector-drawable:25.3.1'
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:support-vector-drawable:26.1.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0'
     testCompile 'junit:junit:4.12'
-
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
-
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.jakewharton:butterknife:8.8.1'
-
     compile 'com.google.code.gson:gson:2.7'
-
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.4'
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
-
+    compile project(':okhttputils')
 }
