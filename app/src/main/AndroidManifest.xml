@@ -27,7 +27,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activities.WeatherActivity" />
         <activity android:name=".ui.activities.HistoryTodayActivity" />
 
     </application>

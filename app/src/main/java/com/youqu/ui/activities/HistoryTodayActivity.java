@@ -37,14 +37,14 @@ public class HistoryTodayActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        initTitle("历史上的今天",true);
+        initTitle("历史上的今天", true);
 
         ButterKnife.bind(this);
 
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.putOpt("key","520TEST");
-            jsonObject.putOpt("day","0120");
+            jsonObject.putOpt("key", "520TEST");
+            jsonObject.putOpt("day", "0120");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -52,18 +52,14 @@ public class HistoryTodayActivity extends BaseActivity {
         NetworkManager.get().getHistoryTodayData(jsonObject.toString(), new JsonObjectCallback<HistoryTodayData>() {
 
             @Override
-            public void onResponse(HistoryTodayData response, int id) {
-//                Log.e(TAG,"response = " + response.toString());
-                List<HistoryTodayData.ResultBean> list = response.getResult();
-
-                for (HistoryTodayData.ResultBean bean:list){
-                    Log.e(TAG,bean.toString());
-                }
+            public void onResponse(HistoryTodayData response) {
+                Log.e(TAG, "response = " + response.toString());
+                tv_content.setText(response.toString());
             }
 
             @Override
             public void onError(String msg) {
-                Log.e(TAG,"onError = " + msg);
+                Log.e(TAG, "onError = " + msg);
             }
         });
 

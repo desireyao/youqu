@@ -27,4 +27,11 @@ public abstract class JsonObjectCallback<T> extends BaseHttpCallback<T> {
         }
         return t;
     }
+
+    @Override
+    public void onResponse(T response, int id) {
+        onResponse(response);
+    }
+
+    public abstract void onResponse(T response);
 }
