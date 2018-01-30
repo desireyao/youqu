@@ -48,6 +48,7 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    flavorDimensions "server"
 
     productFlavors {
         YouQu_Release {
@@ -59,6 +60,8 @@ android {
             buildConfigField('String', 'VALUE_BASE_URL', toJavaCodeString(VALUE_BASE_URL))
             manifestPlaceholders = [app_name: "@string/app_name"]
 
+            dimension "server"
+
         }
 
         YouQu_Preview {
@@ -69,6 +72,8 @@ android {
             buildConfigField('String', 'VALUE_HOST_URL', toJavaCodeString(VALUE_HOST_URL))
             buildConfigField('String', 'VALUE_BASE_URL', toJavaCodeString(VALUE_BASE_URL))
             manifestPlaceholders = [app_name: "@string/app_name"]
+
+            dimension "server"
 
         }
     }
@@ -159,4 +164,5 @@ dependencies {
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.4'
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
     compile project(':okhttputils')
+    implementation project(':LRecyclerview_library')
 }
