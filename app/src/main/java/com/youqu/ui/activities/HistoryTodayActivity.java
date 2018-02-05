@@ -1,10 +1,15 @@
 package com.youqu.ui.activities;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.youqu.R;
+import com.youqu.adapter.ListBaseAdapter;
+import com.youqu.holder.SuperViewHolder;
 import com.youqu.network.NetworkManager;
 import com.youqu.network.bean.res.HistoryTodayData;
 import com.youqu.network.callback.JsonObjectCallback;
@@ -24,6 +29,11 @@ public class HistoryTodayActivity extends BaseActivity {
 
     @BindView(R.id.tv_content)
     TextView tv_content;
+
+    @BindView(R.id.mRecyclerview)
+    RecyclerView mRecyclerview;
+
+    private LRecyclerViewAdapter mLRecyclerViewAdapter = null;
 
     @Override
     public void initData() {
@@ -62,6 +72,43 @@ public class HistoryTodayActivity extends BaseActivity {
                 Log.e(TAG, "onError = " + msg);
             }
         });
+    }
+
+    private void initRecyclerview(){
+
 
     }
+
+    class DataAdapter extends ListBaseAdapter<ItemModel> {
+
+        public DataAdapter(Context context) {
+            super(context);
+        }
+
+        @Override
+        public int getLayoutId() {
+            return R.layout.item_recy_history_today;
+        }
+
+        @Override
+        public void onBindItemHolder(SuperViewHolder holder, int position) {
+            ItemModel item = mDataList.get(position);
+
+            TextView titleText = holder.getView(R.id.tv_title);
+            titleText.setText(item.title);
+
+            TextView eventText = holder.getView(R.id.tv_event);
+            eventText.setText(item.event);
+        }
+    }
+
+    class ItemModel{
+        public String title;
+        public String event;
+
+        public String historyDate;
+        public int day;
+        public int month;
+    }
+
 }

@@ -11,9 +11,9 @@
     <include layout="@layout/include_toolbar" />
 
     <com.github.jdsjlzx.recyclerview.LRecyclerView
-        android:id="@+id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:id="@+id/mRecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:descendantFocusability="blocksDescendants"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
